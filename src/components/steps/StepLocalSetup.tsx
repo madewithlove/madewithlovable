@@ -6,9 +6,17 @@ import { ArrowRight, ArrowLeft, Copy, Check, Download, ExternalLink, Code, Termi
 export function StepLocalSetup() {
   const { nextStep, skipStep, prevStep, currentStep, githubRepo, githubUrl } = useWizard();
   const [copied, setCopied] = useState(false);
-  const cloneCmd = githubRepo
-    ? `git clone ${githubUrl.trim().replace(/\/$/, "")}.git`
-    : "git clone <your-github-repo-url>";
+  const [cloneMethod, setCloneMethod] = useState<"https" | "ssh">("https");
+
+  const getCloneCmd = () => {
+    if (!githubRepo) return "git clone <your-github-repo-url>";
+    if (cloneMethod === "ssh") {
+      return `git clone git@github.com:${githubRepo.org}/${githubRepo.repo}.git`;
+    }
+    return `git clone ${githubUrl.trim().replace(/\/$/, "")}.git`;
+  };
+
+  const cloneCmd = getCloneCmd();
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(cloneCmd);
@@ -50,6 +58,28 @@ export function StepLocalSetup() {
       <div className="mb-6 space-y-4">
         <div>
           <h3 className="mb-2 text-sm font-semibold text-foreground">1. Clone your repository</h3>
+          <div className="mb-2 flex gap-1">
+            <button
+              onClick={() => setCloneMethod("https")}
+              className={`rounded-md px-3 py-1 text-xs font-medium transition-colors ${
+                cloneMethod === "https"
+                  ? "bg-accent text-accent-foreground"
+                  : "bg-muted text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              HTTPS
+            </button>
+            <button
+              onClick={() => setCloneMethod("ssh")}
+              className={`rounded-md px-3 py-1 text-xs font-medium transition-colors ${
+                cloneMethod === "ssh"
+                  ? "bg-accent text-accent-foreground"
+                  : "bg-muted text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              SSH
+            </button>
+          </div>
           <div className="relative rounded-lg border border-border bg-muted p-4">
             <code className="text-sm text-foreground">{cloneCmd}</code>
             <button
