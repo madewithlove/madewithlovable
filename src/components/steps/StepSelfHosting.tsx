@@ -45,29 +45,7 @@ export function StepSelfHosting() {
 
       <div className="mb-6 space-y-4">
         <div>
-          <h3 className="mb-2 text-sm font-semibold text-foreground">1. Create a production branch</h3>
-          <p className="text-sm text-muted-foreground">
-            In your GitHub repository, create a new branch called <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">production</code>.
-          </p>
-        </div>
-
-        <div>
-          <h3 className="mb-2 text-sm font-semibold text-foreground">2. Download CI/CD setup</h3>
-          <Button variant="outline" size="sm" asChild>
-            <a href="/ci-cd.zip" download="ci-cd.zip">
-              <Download className="mr-2 h-4 w-4" /> Download ci-cd.zip
-            </a>
-          </Button>
-          <p className="mt-2 text-sm text-muted-foreground">These workflows automate three things:</p>
-          <ul className="mt-1 list-inside list-disc space-y-1 text-sm text-muted-foreground">
-            <li>Business users can initiate a merge from main to production — Claude will create a PR and summarise changes</li>
-            <li>Claude reviews the PR against your guardrails</li>
-            <li>Claude approves the PR if everything looks good</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="mb-2 text-sm font-semibold text-foreground">3. Prerequisites</h3>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">1. Prerequisites</h3>
           <ul className="list-inside list-disc space-y-2 text-sm text-muted-foreground">
             <li>
               Install and configure the Claude GitHub app on your repository:{" "}
@@ -81,6 +59,28 @@ export function StepSelfHosting() {
               </a>
             </li>
             <li>Add <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ANTHROPIC_KEY</code> as a repository secret</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">2. Create a production branch</h3>
+          <p className="text-sm text-muted-foreground">
+            In your GitHub repository, create a new branch called <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">production</code>.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">3. Download CI/CD setup</h3>
+          <Button variant="outline" size="sm" asChild>
+            <a href="/ci-cd.zip" download="ci-cd.zip">
+              <Download className="mr-2 h-4 w-4" /> Download ci-cd.zip
+            </a>
+          </Button>
+          <p className="mt-2 text-sm text-muted-foreground">These workflows automate three things:</p>
+          <ul className="mt-1 list-inside list-disc space-y-1 text-sm text-muted-foreground">
+            <li>Business users can initiate a merge from main to production — Claude will create a PR and summarise changes</li>
+            <li>Claude reviews the PR against your guardrails</li>
+            <li>Claude approves the PR if everything looks good</li>
           </ul>
         </div>
 
