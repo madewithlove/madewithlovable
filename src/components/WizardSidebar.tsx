@@ -37,7 +37,7 @@ export function WizardSidebar() {
 
   return (
     <aside className="w-64 shrink-0 bg-sidebar p-6 text-sidebar-foreground min-h-screen">
-      <img src={logo} alt="madewithlovable" className="mb-8 h-8" />
+      <img src={logo} alt="madewithlovable" className="mb-8 w-full" />
       <nav className="space-y-1">
         {steps.map((step) => (
           <div
