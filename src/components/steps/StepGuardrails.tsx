@@ -52,8 +52,10 @@ export function StepGuardrails() {
       <div className="mb-6 space-y-4">
         <div>
           <h3 className="mb-2 text-sm font-semibold text-foreground">1. Download LOVABLE.md</h3>
-          <Button variant="outline" size="sm" disabled>
-            <Download className="mr-2 h-4 w-4" /> Download LOVABLE.md (coming soon)
+          <Button variant="outline" size="sm" asChild>
+            <a href="/LOVABLE.md" download="LOVABLE.md">
+              <Download className="mr-2 h-4 w-4" /> Download LOVABLE.md
+            </a>
           </Button>
         </div>
 
