@@ -52,9 +52,11 @@ export function StepSelfHosting() {
         </div>
 
         <div>
-          <h3 className="mb-2 text-sm font-semibold text-foreground">2. Download Git workflows</h3>
-          <Button variant="outline" size="sm" disabled>
-            <Download className="mr-2 h-4 w-4" /> Download workflows.zip (coming soon)
+          <h3 className="mb-2 text-sm font-semibold text-foreground">2. Download CI/CD setup</h3>
+          <Button variant="outline" size="sm" asChild>
+            <a href="/ci-cd.zip" download="ci-cd.zip">
+              <Download className="mr-2 h-4 w-4" /> Download ci-cd.zip
+            </a>
           </Button>
           <p className="mt-2 text-sm text-muted-foreground">These workflows automate three things:</p>
           <ul className="mt-1 list-inside list-disc space-y-1 text-sm text-muted-foreground">
