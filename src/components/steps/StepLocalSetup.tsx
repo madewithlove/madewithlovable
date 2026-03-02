@@ -117,7 +117,7 @@ export function StepLocalSetup() {
           <h3 className="mb-2 text-sm font-semibold text-foreground">4. Run locally</h3>
           <p className="text-sm text-muted-foreground">
             Run <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">docker-compose up</code> and access your app at{" "}
-            <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">http://localhost:8090</code>
+            <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">http://localhost:8080</code>
           </p>
         </div>
       </div>
