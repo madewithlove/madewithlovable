@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useWizard } from "@/contexts/WizardContext";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft, Copy, Check, ExternalLink, Download, ShieldCheck, BookOpen, GitBranch } from "lucide-react";
+import heartIcon from "@/assets/heart-icon.png";
 
 const KNOWLEDGE_TEXT = `Adhere to all guidelines detailed in LOVABLE.md in the root directory.
 
@@ -21,8 +22,11 @@ export function StepGuardrails() {
   return (
     <div className="w-full max-w-2xl">
       <h2 className="mb-2 text-2xl font-bold text-foreground">Set Up Guardrails</h2>
-      <p className="mb-6 text-muted-foreground">
+      <p className="mb-2 text-muted-foreground">
         Engineers need to enforce rules that Lovable must respect. A LOVABLE.md file in your repository root acts as the single source of truth for what can and can't be changed.
+      </p>
+      <p className="mb-6 flex items-center gap-1.5 text-muted-foreground">
+        Add guardrails to your <img src={heartIcon} alt="heart" className="inline h-5 w-5" />'s content. Think about what needs guardrails without limiting the business user too much — we don't want to remove the fun.
       </p>
 
       <div className="mb-6 grid gap-3 sm:grid-cols-3">
