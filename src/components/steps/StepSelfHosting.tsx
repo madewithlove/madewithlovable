@@ -1,6 +1,6 @@
 import { useWizard } from "@/contexts/WizardContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, Download, Globe, ShieldCheck, Workflow, Server } from "lucide-react";
+import { ArrowRight, ArrowLeft, Download, Globe, ShieldCheck, Workflow, Server, ExternalLink } from "lucide-react";
 
 export function StepSelfHosting() {
   const { nextStep, skipStep, prevStep, currentStep } = useWizard();
@@ -68,8 +68,18 @@ export function StepSelfHosting() {
 
         <div>
           <h3 className="mb-2 text-sm font-semibold text-foreground">3. Prerequisites</h3>
-          <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
-            <li>Install the Claude GitHub app on your repository</li>
+          <ul className="list-inside list-disc space-y-2 text-sm text-muted-foreground">
+            <li>
+              Install and configure the Claude GitHub app on your repository:{" "}
+              <a
+                href="https://github.com/apps/claude"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1"
+              >
+                github.com/apps/claude <ExternalLink className="h-3 w-3" />
+              </a>
+            </li>
             <li>Add <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ANTHROPIC_KEY</code> as a repository secret</li>
           </ul>
         </div>
