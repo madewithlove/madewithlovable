@@ -26,7 +26,7 @@ function WizardContent() {
   return (
     <div className="flex min-h-screen">
       <WizardSidebar />
-      <main className="flex-1 bg-background p-10">
+      <main className="flex-1 bg-background p-10 flex justify-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep}

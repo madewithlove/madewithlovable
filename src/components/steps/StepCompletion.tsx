@@ -12,7 +12,7 @@ export function StepCompletion() {
   const skipped = steps.filter((s) => s.status === "skipped");
 
   return (
-    <div className="max-w-xl">
+    <div className="w-full max-w-2xl">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}

@@ -6,7 +6,7 @@ export function StepSelfHosting() {
   const { nextStep, skipStep, currentStep } = useWizard();
 
   return (
-    <div className="max-w-xl">
+    <div className="w-full max-w-2xl">
       <h2 className="mb-2 text-2xl font-bold text-foreground">production self-hosting</h2>
       <p className="mb-6 text-muted-foreground">
         set up automated deployments with code review guardrails. this step is optional.
