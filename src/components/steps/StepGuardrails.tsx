@@ -53,11 +53,23 @@ export function StepGuardrails() {
       <div className="mb-6 space-y-4">
         <div>
           <h3 className="mb-2 text-sm font-semibold text-foreground">1. Download LOVABLE.md</h3>
-          <Button variant="outline" size="sm" asChild>
-            <a href="/LOVABLE.md" download="LOVABLE.md">
-              <Download className="mr-2 h-4 w-4" /> Download LOVABLE.md
-            </a>
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" asChild>
+              <a href="/LOVABLE.md" download="LOVABLE.md">
+                <Download className="mr-2 h-4 w-4" /> Download LOVABLE.md
+              </a>
+            </Button>
+            {githubRepo && (
+              <a
+                href={`https://github.com/${githubRepo.org}/${githubRepo.repo}/new/main`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-sm text-accent underline-offset-4 hover:underline"
+              >
+                Create file in repo <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+          </div>
         </div>
 
         <div>
