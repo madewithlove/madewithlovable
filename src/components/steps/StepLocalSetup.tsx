@@ -1,0 +1,77 @@
+import { useState } from "react";
+import { useWizard } from "@/contexts/WizardContext";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Copy, Check, Download, ExternalLink } from "lucide-react";
+
+export function StepLocalSetup() {
+  const { nextStep, skipStep, currentStep } = useWizard();
+  const [copied, setCopied] = useState(false);
+  const cloneCmd = "git clone <your-github-repo-url>";
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(cloneCmd);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="max-w-xl">
+      <h2 className="mb-2 text-2xl font-bold text-foreground">local development setup</h2>
+      <p className="mb-6 text-muted-foreground">
+        run your lovable project locally for testing and development. this step is optional.
+      </p>
+
+      <div className="mb-6 space-y-4">
+        <div>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">1. clone your repository</h3>
+          <div className="relative rounded-lg border border-border bg-muted p-4">
+            <code className="text-sm text-foreground">{cloneCmd}</code>
+            <button
+              onClick={handleCopy}
+              className="absolute right-3 top-3 rounded-md p-1.5 text-muted-foreground hover:bg-background hover:text-foreground transition-colors"
+            >
+              {copied ? <Check className="h-4 w-4 text-accent" /> : <Copy className="h-4 w-4" />}
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">2. download docker setup</h3>
+          <Button variant="outline" size="sm" disabled>
+            <Download className="mr-2 h-4 w-4" /> download docker.zip (coming soon)
+          </Button>
+          <p className="mt-2 text-xs text-muted-foreground">unpack in the repository root directory.</p>
+        </div>
+
+        <div>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">3. install docker</h3>
+          <a
+            href="https://docs.docker.com/get-docker/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-accent underline-offset-4 hover:underline inline-flex items-center gap-1"
+          >
+            get docker <ExternalLink className="h-3 w-3" />
+          </a>
+        </div>
+
+        <div>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">4. run locally</h3>
+          <p className="text-sm text-muted-foreground">
+            run <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">docker-compose up</code> and access your app at{" "}
+            <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">http://localhost:8090</code>
+          </p>
+        </div>
+      </div>
+
+      <div className="flex gap-3">
+        <Button onClick={nextStep} className="bg-accent text-accent-foreground hover:bg-accent/90">
+          next <ArrowRight className="ml-2 h-4 w-4" />
+        </Button>
+        <Button variant="ghost" onClick={() => skipStep(currentStep)} className="text-muted-foreground">
+          skip for now
+        </Button>
+      </div>
+    </div>
+  );
+}
