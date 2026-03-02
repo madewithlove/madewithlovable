@@ -84,14 +84,7 @@ export function StepSelfHosting() {
           <h3 className="mb-2 text-sm font-semibold text-foreground">2. Create a production branch</h3>
           <p className="text-sm text-muted-foreground">
             In your GitHub repository, create a new branch called <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">production</code>. Go to{" "}
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1"
-            >
-              github.com/&lt;your-org&gt;/&lt;your-repo&gt;/branches <ExternalLink className="h-3 w-3" />
-            </a>{" "}
+            <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">github.com/&lt;your-org&gt;/&lt;your-repo&gt;/branches</code>{" "}
             and click <strong>New branch</strong>.
           </p>
         </div>
