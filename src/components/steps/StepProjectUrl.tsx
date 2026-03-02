@@ -20,7 +20,7 @@ export function StepProjectUrl() {
   };
 
   return (
-    <div className="max-w-xl">
+    <div className="w-full max-w-2xl">
       <h2 className="mb-2 text-2xl font-bold text-foreground">enter your lovable project url</h2>
       <p className="mb-6 text-muted-foreground">
         paste your project url so we can configure everything for you.

@@ -8,7 +8,7 @@ export function StepGitHub() {
   const docsUrl = "https://docs.lovable.dev/integrations/github";
 
   return (
-    <div className="max-w-xl">
+    <div className="w-full max-w-2xl">
       <h2 className="mb-2 text-2xl font-bold text-foreground">connect to github</h2>
       <p className="mb-6 text-muted-foreground">
         exporting your code to github is the first step to owning your codebase. this ensures you always have a copy of your code outside of lovable.

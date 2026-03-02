@@ -15,7 +15,7 @@ export function StepLocalSetup() {
   };
 
   return (
-    <div className="max-w-xl">
+    <div className="w-full max-w-2xl">
       <h2 className="mb-2 text-2xl font-bold text-foreground">local development setup</h2>
       <p className="mb-6 text-muted-foreground">
         run your lovable project locally for testing and development. this step is optional.
