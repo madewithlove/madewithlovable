@@ -1,9 +1,9 @@
 import { useWizard } from "@/contexts/WizardContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, ArrowLeft, Download } from "lucide-react";
 
 export function StepSelfHosting() {
-  const { nextStep, skipStep, currentStep } = useWizard();
+  const { nextStep, skipStep, prevStep, currentStep } = useWizard();
 
   return (
     <div className="w-full max-w-2xl">
@@ -53,6 +53,9 @@ export function StepSelfHosting() {
       </div>
 
       <div className="flex gap-3">
+        <Button variant="outline" onClick={prevStep}>
+          <ArrowLeft className="mr-2 h-4 w-4" /> Back
+        </Button>
         <Button onClick={nextStep} className="bg-accent text-accent-foreground hover:bg-accent/90">
           Next <ArrowRight className="ml-2 h-4 w-4" />
         </Button>

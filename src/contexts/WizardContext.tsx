@@ -18,6 +18,7 @@ interface WizardState {
   completeStep: (step: number) => void;
   skipStep: (step: number) => void;
   nextStep: () => void;
+  prevStep: () => void;
 }
 
 const defaultSteps: StepInfo[] = [
@@ -75,9 +76,15 @@ export function WizardProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const prevStep = () => {
+    if (currentStep > 1) {
+      goToStep(currentStep - 1);
+    }
+  };
+
   return (
     <WizardContext.Provider
-      value={{ projectUuid, setProjectUuid, currentStep, steps, goToStep, completeStep, skipStep, nextStep }}
+      value={{ projectUuid, setProjectUuid, currentStep, steps, goToStep, completeStep, skipStep, nextStep, prevStep }}
     >
       {children}
     </WizardContext.Provider>

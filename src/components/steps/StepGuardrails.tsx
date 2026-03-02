@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useWizard } from "@/contexts/WizardContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Copy, Check, ExternalLink, Download } from "lucide-react";
+import { ArrowRight, ArrowLeft, Copy, Check, ExternalLink, Download } from "lucide-react";
 
 const KNOWLEDGE_TEXT = `Adhere to all guidelines detailed in LOVABLE.md in the root directory.
 
 You are not allowed to change LOVABLE.md.`;
 
 export function StepGuardrails() {
-  const { projectUuid, nextStep, skipStep, currentStep } = useWizard();
+  const { projectUuid, nextStep, skipStep, prevStep, currentStep } = useWizard();
   const [copied, setCopied] = useState(false);
   const knowledgeUrl = `https://lovable.dev/projects/${projectUuid}/settings?tab=knowledge`;
 
@@ -59,6 +59,9 @@ export function StepGuardrails() {
       </div>
 
       <div className="flex gap-3">
+        <Button variant="outline" onClick={prevStep}>
+          <ArrowLeft className="mr-2 h-4 w-4" /> Back
+        </Button>
         <Button onClick={nextStep} className="bg-accent text-accent-foreground hover:bg-accent/90">
           Next <ArrowRight className="ml-2 h-4 w-4" />
         </Button>

@@ -1,9 +1,9 @@
 import { useWizard } from "@/contexts/WizardContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ExternalLink, GitBranch, Users, RotateCcw, FileText } from "lucide-react";
+import { ArrowRight, ArrowLeft, ExternalLink, GitBranch, Users, RotateCcw, FileText } from "lucide-react";
 
 export function StepGitHub() {
-  const { projectUuid, nextStep } = useWizard();
+  const { projectUuid, nextStep, prevStep } = useWizard();
   const settingsUrl = `https://lovable.dev/projects/${projectUuid}/settings?tab=github`;
   const docsUrl = "https://docs.lovable.dev/integrations/github";
 
@@ -71,9 +71,14 @@ export function StepGitHub() {
         </div>
       </div>
 
-      <Button onClick={nextStep} className="bg-accent text-accent-foreground hover:bg-accent/90">
-        Next <ArrowRight className="ml-2 h-4 w-4" />
-      </Button>
+      <div className="flex gap-3">
+        <Button variant="outline" onClick={prevStep}>
+          <ArrowLeft className="mr-2 h-4 w-4" /> Back
+        </Button>
+        <Button onClick={nextStep} className="bg-accent text-accent-foreground hover:bg-accent/90">
+          Next <ArrowRight className="ml-2 h-4 w-4" />
+        </Button>
+      </div>
     </div>
   );
 }
