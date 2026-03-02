@@ -61,6 +61,13 @@ export function StepSelfHosting() {
               </a>
             </li>
             <li>Add <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ANTHROPIC_KEY</code> as a repository secret</li>
+            <li>
+              If using Lovable Cloud, also add your Supabase credentials (found in the <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">.env</code> published by Lovable) as repository secrets:
+              <ul className="mt-1 ml-4 list-inside list-disc space-y-1">
+                <li><code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">VITE_SUPABASE_URL</code></li>
+                <li><code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">VITE_SUPABASE_PUBLISHABLE_KEY</code></li>
+              </ul>
+            </li>
           </ul>
 
           <p className="mb-1 text-sm font-medium text-foreground">Hosting</p>
