@@ -46,7 +46,9 @@ export function StepSelfHosting() {
       <div className="mb-6 space-y-4">
         <div>
           <h3 className="mb-2 text-sm font-semibold text-foreground">1. Prerequisites</h3>
-          <ul className="list-inside list-disc space-y-2 text-sm text-muted-foreground">
+
+          <p className="mb-1 text-sm font-medium text-foreground">CI/CD pipeline</p>
+          <ul className="list-inside list-disc space-y-2 text-sm text-muted-foreground mb-3">
             <li>
               Install and configure the Claude GitHub app on your repository:{" "}
               <a
@@ -59,6 +61,22 @@ export function StepSelfHosting() {
               </a>
             </li>
             <li>Add <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ANTHROPIC_KEY</code> as a repository secret</li>
+          </ul>
+
+          <p className="mb-1 text-sm font-medium text-foreground">Hosting</p>
+          <ul className="list-inside list-disc space-y-2 text-sm text-muted-foreground">
+            <li>An AWS account (used in this example for S3 + CloudFront)</li>
+            <li>
+              Other hosting options are available — see the{" "}
+              <a
+                href="https://docs.lovable.dev/tips-tricks/external-deployment-hosting"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1"
+              >
+                Lovable deployment docs <ExternalLink className="h-3 w-3" />
+              </a>
+            </li>
           </ul>
         </div>
 
