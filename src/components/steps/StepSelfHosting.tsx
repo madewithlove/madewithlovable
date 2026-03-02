@@ -212,6 +212,9 @@ export function StepSelfHosting() {
           <p className="mt-2 text-xs text-muted-foreground">
             Alternatively, you can create the S3 bucket and CloudFront distribution manually.
           </p>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Don't forget to add the S3 bucket name and CloudFront distribution ID to your <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">deploy.yml</code>.
+          </p>
         </div>
       </div>
 
