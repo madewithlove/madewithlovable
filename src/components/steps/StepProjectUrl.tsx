@@ -1,0 +1,49 @@
+import { useState } from "react";
+import { useWizard } from "@/contexts/WizardContext";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+
+const URL_PATTERN = /^https?:\/\/(?:www\.)?lovable\.dev\/projects\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/i;
+
+export function StepProjectUrl() {
+  const { setProjectUuid, nextStep } = useWizard();
+  const [url, setUrl] = useState("");
+  const match = URL_PATTERN.exec(url);
+  const isValid = !!match;
+
+  const handleNext = () => {
+    if (match) {
+      setProjectUuid(match[1]);
+      nextStep();
+    }
+  };
+
+  return (
+    <div className="max-w-xl">
+      <h2 className="mb-2 text-2xl font-bold text-foreground">enter your lovable project url</h2>
+      <p className="mb-6 text-muted-foreground">
+        paste your project url so we can configure everything for you.
+      </p>
+      <Input
+        placeholder="https://lovable.dev/projects/your-project-id"
+        value={url}
+        onChange={(e) => setUrl(e.target.value)}
+        className="mb-2"
+      />
+      {url && !isValid && (
+        <p className="mb-4 text-sm text-destructive">
+          please enter a valid lovable project url (e.g. https://lovable.dev/projects/uuid)
+        </p>
+      )}
+      {isValid && (
+        <p className="mb-4 text-sm text-accent">
+          ✓ valid project detected
+        </p>
+      )}
+      <Button onClick={handleNext} disabled={!isValid} className="bg-accent text-accent-foreground hover:bg-accent/90">
+        next <ArrowRight className="ml-2 h-4 w-4" />
+      </Button>
+    </div>
+  );
+}
