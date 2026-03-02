@@ -1,6 +1,7 @@
 import { useWizard } from "@/contexts/WizardContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, Download, Globe, ShieldCheck, Workflow, Server, ExternalLink } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ArrowRight, ArrowLeft, Download, Globe, ShieldCheck, Workflow, Server, ExternalLink, ChevronDown } from "lucide-react";
 
 export function StepSelfHosting() {
   const { nextStep, skipStep, prevStep, currentStep, githubRepo } = useWizard();
@@ -210,15 +211,41 @@ export function StepSelfHosting() {
 
         <div>
           <h3 className="mb-2 text-sm font-semibold text-foreground">4. Hosting with AWS S3 + CloudFront</h3>
-          <Button variant="outline" size="sm" asChild>
-            <a href="/terraform.zip" download="terraform.zip">
-              <Download className="mr-2 h-4 w-4" /> Download terraform.zip
-            </a>
-          </Button>
-          <p className="mt-2 text-xs text-muted-foreground">
-            Alternatively, you can create the S3 bucket and CloudFront distribution manually.
+          <p className="mb-2 text-sm text-muted-foreground">
+            You need an S3 bucket and a CloudFront distribution. You can either create them manually in the AWS Console or use the Terraform config below.
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="mb-3 text-xs text-muted-foreground">
+            If you don't have Terraform installed, manually creating the two resources in the AWS Console will likely be faster.
+          </p>
+
+          <Collapsible>
+            <div className="flex items-center gap-2">
+              <Button variant="outline" size="sm" asChild>
+                <a href="/terraform.zip" download="terraform.zip">
+                  <Download className="mr-2 h-4 w-4" /> Download terraform.zip
+                </a>
+              </Button>
+              <CollapsibleTrigger asChild>
+                <button className="rounded-md px-2 py-1 text-xs text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1 [&[data-state=open]>svg]:rotate-180">
+                  Terraform commands <ChevronDown className="h-3 w-3 transition-transform duration-200" />
+                </button>
+              </CollapsibleTrigger>
+            </div>
+            <CollapsibleContent>
+              <div className="mt-3 rounded-lg border border-border bg-muted p-4 space-y-1">
+                <p className="text-xs text-muted-foreground mb-2"># Set your AWS profile (if not using default)</p>
+                <code className="block text-sm text-foreground">export AWS_PROFILE=your-profile-name</code>
+                <p className="text-xs text-muted-foreground mt-3 mb-2"># Initialize (downloads AWS provider)</p>
+                <code className="block text-sm text-foreground">terraform init</code>
+                <p className="text-xs text-muted-foreground mt-3 mb-2"># Preview what will be created</p>
+                <code className="block text-sm text-foreground">terraform plan</code>
+                <p className="text-xs text-muted-foreground mt-3 mb-2"># Create the resources</p>
+                <code className="block text-sm text-foreground">terraform apply</code>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
+
+          <p className="mt-3 text-xs text-muted-foreground">
             Don't forget to add the S3 bucket name and CloudFront distribution ID to your <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">deploy.yml</code>.
           </p>
         </div>
