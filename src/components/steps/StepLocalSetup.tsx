@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useWizard } from "@/contexts/WizardContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, Copy, Check, Download, ExternalLink } from "lucide-react";
+import { ArrowRight, ArrowLeft, Copy, Check, Download, ExternalLink, Code, Terminal, Cpu } from "lucide-react";
 
 export function StepLocalSetup() {
   const { nextStep, skipStep, prevStep, currentStep } = useWizard();
@@ -18,8 +18,32 @@ export function StepLocalSetup() {
     <div className="w-full max-w-2xl">
       <h2 className="mb-2 text-2xl font-bold text-foreground">Local Development Setup</h2>
       <p className="mb-6 text-muted-foreground">
-        Run your Lovable project locally for testing and development. This step is optional.
+        Enable your engineering team to work on the codebase using their favourite IDE or agentic programming tools like Cursor, Windsurf, or Claude Code. This is not for testing — it's for professional development alongside Lovable.
       </p>
+
+      <div className="mb-6 grid gap-3 sm:grid-cols-3">
+        <div className="rounded-lg border border-border bg-card p-4">
+          <div className="mb-2 flex items-center gap-2">
+            <Code className="h-4 w-4 text-accent" />
+            <h3 className="text-sm font-semibold text-foreground">Use any IDE</h3>
+          </div>
+          <p className="text-xs text-muted-foreground">VS Code, WebStorm, Cursor, Windsurf — engineers work in the tools they're most productive with.</p>
+        </div>
+        <div className="rounded-lg border border-border bg-card p-4">
+          <div className="mb-2 flex items-center gap-2">
+            <Cpu className="h-4 w-4 text-accent" />
+            <h3 className="text-sm font-semibold text-foreground">Agentic programming</h3>
+          </div>
+          <p className="text-xs text-muted-foreground">Use AI-assisted coding tools like Claude Code or Copilot directly on the codebase with full context.</p>
+        </div>
+        <div className="rounded-lg border border-border bg-card p-4">
+          <div className="mb-2 flex items-center gap-2">
+            <Terminal className="h-4 w-4 text-accent" />
+            <h3 className="text-sm font-semibold text-foreground">Full local environment</h3>
+          </div>
+          <p className="text-xs text-muted-foreground">Run the entire stack locally with Docker — database, backend, and frontend all in one command.</p>
+        </div>
+      </div>
 
       <div className="mb-6 space-y-4">
         <div>
@@ -36,9 +60,11 @@ export function StepLocalSetup() {
         </div>
 
         <div>
-          <h3 className="mb-2 text-sm font-semibold text-foreground">2. Download Docker setup</h3>
-          <Button variant="outline" size="sm" disabled>
-            <Download className="mr-2 h-4 w-4" /> Download docker.zip (coming soon)
+          <h3 className="mb-2 text-sm font-semibold text-foreground">2. Download local setup</h3>
+          <Button variant="outline" size="sm" asChild>
+            <a href="/local-setup.zip" download="local-setup.zip">
+              <Download className="mr-2 h-4 w-4" /> Download local-setup.zip
+            </a>
           </Button>
           <p className="mt-2 text-xs text-muted-foreground">Unpack in the repository root directory.</p>
         </div>
