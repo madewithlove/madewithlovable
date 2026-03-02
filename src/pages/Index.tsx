@@ -34,7 +34,7 @@ const Index = () => {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <img src={logo} alt="madewithlovable" className="mx-auto mb-6 h-24 md:h-32" />
+          <img src={logo} alt="madewithlovable" className="mx-auto mb-6 w-full max-w-2xl" />
           <p className="mx-auto max-w-2xl text-lg text-accent-foreground/70">
             set up a protected production environment and put guardrails on lovable so business users can keep building without risk.
           </p>
