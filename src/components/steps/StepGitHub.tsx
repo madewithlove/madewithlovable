@@ -1,11 +1,25 @@
+import { useState } from "react";
 import { useWizard } from "@/contexts/WizardContext";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { ArrowRight, ArrowLeft, ExternalLink, GitBranch, Users, RotateCcw, FileText } from "lucide-react";
 
+const GITHUB_URL_REGEX = /^https?:\/\/github\.com\/[^/]+\/[^/]+\/?$/;
+
 export function StepGitHub() {
-  const { projectUuid, nextStep, prevStep } = useWizard();
+  const { projectUuid, githubUrl, setGithubUrl, nextStep, prevStep } = useWizard();
+  const [urlError, setUrlError] = useState("");
   const settingsUrl = `https://lovable.dev/projects/${projectUuid}/settings?tab=github`;
   const docsUrl = "https://docs.lovable.dev/integrations/github";
+
+  const handleUrlChange = (value: string) => {
+    setGithubUrl(value);
+    if (value && !GITHUB_URL_REGEX.test(value.trim())) {
+      setUrlError("Please enter a valid GitHub repository URL (e.g. https://github.com/org/repo)");
+    } else {
+      setUrlError("");
+    }
+  };
 
   const benefits = [
     {
@@ -69,6 +83,22 @@ export function StepGitHub() {
             Read the Lovable GitHub docs →
           </a>
         </div>
+      </div>
+
+      <div className="mb-6">
+        <label className="mb-1 block text-sm font-medium text-foreground">
+          GitHub repository URL <span className="text-muted-foreground font-normal">(optional)</span>
+        </label>
+        <Input
+          placeholder="https://github.com/your-org/your-repo"
+          value={githubUrl}
+          onChange={(e) => handleUrlChange(e.target.value)}
+          className={urlError ? "border-destructive" : ""}
+        />
+        {urlError && <p className="mt-1 text-xs text-destructive">{urlError}</p>}
+        <p className="mt-1 text-xs text-muted-foreground">
+          If provided, we'll generate ready-to-use links in the next steps.
+        </p>
       </div>
 
       <div className="flex gap-3">

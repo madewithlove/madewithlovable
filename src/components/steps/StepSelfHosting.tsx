@@ -3,7 +3,17 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft, Download, Globe, ShieldCheck, Workflow, Server, ExternalLink } from "lucide-react";
 
 export function StepSelfHosting() {
-  const { nextStep, skipStep, prevStep, currentStep } = useWizard();
+  const { nextStep, skipStep, prevStep, currentStep, githubRepo } = useWizard();
+
+  const envLink = githubRepo
+    ? `https://github.com/${githubRepo.org}/${githubRepo.repo}/blob/main/.env`
+    : null;
+  const branchesLink = githubRepo
+    ? `https://github.com/${githubRepo.org}/${githubRepo.repo}/branches`
+    : null;
+  const secretsLink = githubRepo
+    ? `https://github.com/${githubRepo.org}/${githubRepo.repo}/settings/secrets/actions`
+    : null;
 
   return (
     <div className="w-full max-w-2xl">
@@ -60,9 +70,26 @@ export function StepSelfHosting() {
                 github.com/apps/claude <ExternalLink className="h-3 w-3" />
               </a>
             </li>
-            <li>Add <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ANTHROPIC_KEY</code> as a repository secret</li>
             <li>
-              If using Lovable Cloud, also add your Supabase credentials (found in the <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">.env</code> published by Lovable) as repository secrets:
+              Add <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ANTHROPIC_KEY</code> as a{" "}
+              {secretsLink ? (
+                <a href={secretsLink} target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1">
+                  repository secret <ExternalLink className="h-3 w-3" />
+                </a>
+              ) : (
+                "repository secret"
+              )}
+            </li>
+            <li>
+              If using Lovable Cloud, also add your Supabase credentials (found in the{" "}
+              {envLink ? (
+                <a href={envLink} target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1">
+                  <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">.env</code> <ExternalLink className="h-3 w-3" />
+                </a>
+              ) : (
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">.env</code>
+              )}{" "}
+              published by Lovable) as repository secrets:
               <ul className="mt-1 ml-4 list-inside list-disc space-y-1">
                 <li><code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">VITE_SUPABASE_URL</code></li>
                 <li><code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">VITE_SUPABASE_PUBLISHABLE_KEY</code></li>
@@ -91,7 +118,13 @@ export function StepSelfHosting() {
           <h3 className="mb-2 text-sm font-semibold text-foreground">2. Create a production branch</h3>
           <p className="text-sm text-muted-foreground">
             In your GitHub repository, create a new branch called <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">production</code>. Go to{" "}
-            <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">github.com/&lt;your-org&gt;/&lt;your-repo&gt;/branches</code>{" "}
+            {branchesLink ? (
+              <a href={branchesLink} target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1">
+                your branches page <ExternalLink className="h-3 w-3" />
+              </a>
+            ) : (
+              <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">github.com/&lt;your-org&gt;/&lt;your-repo&gt;/branches</code>
+            )}{" "}
             and click <strong>New branch</strong>.
           </p>
         </div>

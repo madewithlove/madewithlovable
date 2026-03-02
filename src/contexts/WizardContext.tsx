@@ -12,6 +12,10 @@ export interface StepInfo {
 interface WizardState {
   projectUuid: string;
   setProjectUuid: (uuid: string) => void;
+  githubUrl: string;
+  setGithubUrl: (url: string) => void;
+  /** Returns { org, repo } if githubUrl is valid, otherwise null */
+  githubRepo: { org: string; repo: string } | null;
   currentStep: number;
   steps: StepInfo[];
   goToStep: (step: number) => void;
@@ -33,8 +37,15 @@ const WizardContext = createContext<WizardState | undefined>(undefined);
 
 export function WizardProvider({ children }: { children: ReactNode }) {
   const [projectUuid, setProjectUuid] = useState("");
+  const [githubUrl, setGithubUrl] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
   const [steps, setSteps] = useState<StepInfo[]>(defaultSteps);
+
+  const githubRepo = (() => {
+    const match = githubUrl.match(/github\.com\/([^/]+)\/([^/]+)/);
+    if (!match) return null;
+    return { org: match[1], repo: match[2].replace(/\.git$/, "") };
+  })();
 
   const updateStepStatus = (stepId: number, status: StepStatus) => {
     setSteps((prev) =>
@@ -84,7 +95,7 @@ export function WizardProvider({ children }: { children: ReactNode }) {
 
   return (
     <WizardContext.Provider
-      value={{ projectUuid, setProjectUuid, currentStep, steps, goToStep, completeStep, skipStep, nextStep, prevStep }}
+      value={{ projectUuid, setProjectUuid, githubUrl, setGithubUrl, githubRepo, currentStep, steps, goToStep, completeStep, skipStep, nextStep, prevStep }}
     >
       {children}
     </WizardContext.Provider>

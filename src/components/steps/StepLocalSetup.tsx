@@ -4,9 +4,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft, Copy, Check, Download, ExternalLink, Code, Terminal, Cpu } from "lucide-react";
 
 export function StepLocalSetup() {
-  const { nextStep, skipStep, prevStep, currentStep } = useWizard();
+  const { nextStep, skipStep, prevStep, currentStep, githubRepo, githubUrl } = useWizard();
   const [copied, setCopied] = useState(false);
-  const cloneCmd = "git clone <your-github-repo-url>";
+  const cloneCmd = githubRepo
+    ? `git clone ${githubUrl.trim().replace(/\/$/, "")}.git`
+    : "git clone <your-github-repo-url>";
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(cloneCmd);
