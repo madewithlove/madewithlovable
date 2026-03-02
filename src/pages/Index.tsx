@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Shield, Zap, Code, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 const points = [
   {
@@ -33,6 +34,7 @@ const Index = () => {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
+          <img src={logo} alt="madewithlovable logo" className="mx-auto mb-6 h-16" />
           <h1 className="mb-4 text-5xl font-bold tracking-tight md:text-6xl">
             madewithlovable
           </h1>
