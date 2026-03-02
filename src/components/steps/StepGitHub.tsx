@@ -13,8 +13,11 @@ export function StepGitHub() {
   const docsUrl = "https://docs.lovable.dev/integrations/github";
 
   const handleUrlChange = (value: string) => {
-    setGithubUrl(value);
-    if (value && !GITHUB_URL_REGEX.test(value.trim())) {
+    // Extract base repo URL if user pastes a deep link (e.g. .../blob/main/...)
+    const match = value.trim().match(/^(https?:\/\/github\.com\/[^/]+\/[^/]+)/);
+    const cleaned = match ? match[1] : value.trim();
+    setGithubUrl(cleaned);
+    if (cleaned && !GITHUB_URL_REGEX.test(cleaned)) {
       setUrlError("Please enter a valid GitHub repository URL (e.g. https://github.com/org/repo)");
     } else {
       setUrlError("");
