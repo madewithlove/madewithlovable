@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useWizard } from "@/contexts/WizardContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, Copy, Check, ExternalLink, Download } from "lucide-react";
+import { ArrowRight, ArrowLeft, Copy, Check, ExternalLink, Download, ShieldCheck, BookOpen, GitBranch } from "lucide-react";
 
 const KNOWLEDGE_TEXT = `Adhere to all guidelines detailed in LOVABLE.md in the root directory.
 
@@ -22,8 +22,32 @@ export function StepGuardrails() {
     <div className="w-full max-w-2xl">
       <h2 className="mb-2 text-2xl font-bold text-foreground">Set Up Guardrails</h2>
       <p className="mb-6 text-muted-foreground">
-        Add a LOVABLE.md file to your repository root to define rules that Lovable must follow.
+        Engineers need to enforce rules that Lovable must respect. A LOVABLE.md file in your repository root acts as the single source of truth for what can and can't be changed.
       </p>
+
+      <div className="mb-6 grid gap-3 sm:grid-cols-3">
+        <div className="rounded-lg border border-border bg-card p-4">
+          <div className="mb-2 flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-accent" />
+            <h3 className="text-sm font-semibold text-foreground">Protect critical code</h3>
+          </div>
+          <p className="text-xs text-muted-foreground">Lock down business logic, API integrations, and security-sensitive code that must not be overridden.</p>
+        </div>
+        <div className="rounded-lg border border-border bg-card p-4">
+          <div className="mb-2 flex items-center gap-2">
+            <BookOpen className="h-4 w-4 text-accent" />
+            <h3 className="text-sm font-semibold text-foreground">Coding guidelines</h3>
+          </div>
+          <p className="text-xs text-muted-foreground">Define naming conventions, architecture patterns, and standards that Lovable must follow when generating code.</p>
+        </div>
+        <div className="rounded-lg border border-border bg-card p-4">
+          <div className="mb-2 flex items-center gap-2">
+            <GitBranch className="h-4 w-4 text-accent" />
+            <h3 className="text-sm font-semibold text-foreground">Automated review</h3>
+          </div>
+          <p className="text-xs text-muted-foreground">Because it lives in Git, these rules can be enforced automatically during code review before anything reaches production.</p>
+        </div>
+      </div>
 
       <div className="mb-6 space-y-4">
         <div>
