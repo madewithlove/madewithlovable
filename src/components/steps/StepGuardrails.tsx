@@ -22,11 +22,8 @@ export function StepGuardrails() {
   return (
     <div className="w-full max-w-2xl">
       <h2 className="mb-2 text-2xl font-bold text-foreground">Set Up Guardrails</h2>
-      <p className="mb-2 text-muted-foreground">
+      <p className="mb-6 text-muted-foreground">
         Engineers need to enforce rules that Lovable must respect. A LOVABLE.md file in your repository root acts as the single source of truth for what can and can't be changed.
-      </p>
-      <p className="mb-6 flex items-center gap-1.5 text-muted-foreground">
-        Add guardrails to your <img src={heartIcon} alt="heart" className="inline h-5 w-5" />'s content. Think about what needs guardrails without limiting the business user too much — we don't want to remove the fun.
       </p>
 
       <div className="mb-6 grid gap-3 sm:grid-cols-3">
@@ -85,6 +82,15 @@ export function StepGuardrails() {
               {copied ? <Check className="h-4 w-4 text-accent" /> : <Copy className="h-4 w-4" />}
             </button>
           </div>
+        </div>
+
+        <div>
+          <h3 className="mb-2 text-sm font-semibold text-foreground inline-flex items-center gap-1.5">
+            3. Add guardrails to your <img src={heartIcon} alt="heart" className="inline h-4 w-4" />'s content
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Think about what needs guardrails without limiting the business user too much — we don't want to remove the fun.
+          </p>
         </div>
       </div>
 
