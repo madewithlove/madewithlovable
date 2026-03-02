@@ -23,7 +23,7 @@ export function StepProjectUrl() {
     <div className="w-full max-w-2xl">
       <h2 className="mb-2 text-2xl font-bold text-foreground">Enter your Lovable project URL</h2>
       <p className="mb-6 text-muted-foreground">
-        Paste your project URL so we can configure everything for you.
+        Paste your project URL so we can give you the correct links.
       </p>
       <Input
         placeholder="https://lovable.dev/projects/your-project-id"
