@@ -210,8 +210,10 @@ export function StepSelfHosting() {
 
         <div>
           <h3 className="mb-2 text-sm font-semibold text-foreground">4. Hosting with AWS S3 + CloudFront</h3>
-          <Button variant="outline" size="sm" disabled>
-            <Download className="mr-2 h-4 w-4" /> Download terraform.zip (coming soon)
+          <Button variant="outline" size="sm" asChild>
+            <a href="/terraform.zip" download="terraform.zip">
+              <Download className="mr-2 h-4 w-4" /> Download terraform.zip
+            </a>
           </Button>
           <p className="mt-2 text-xs text-muted-foreground">
             Alternatively, you can create the S3 bucket and CloudFront distribution manually.
