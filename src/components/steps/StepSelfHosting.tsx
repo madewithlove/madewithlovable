@@ -17,6 +17,12 @@ export function StepSelfHosting() {
   const actionsSettingsLink = githubRepo
     ? `https://github.com/organizations/${githubRepo.org}/settings/actions`
     : null;
+  const actionsLink = githubRepo
+    ? `https://github.com/${githubRepo.org}/${githubRepo.repo}/actions`
+    : null;
+  const deployYmlLink = githubRepo
+    ? `https://github.com/${githubRepo.org}/${githubRepo.repo}/blob/main/.github/workflows/deploy.yml`
+    : null;
 
   return (
     <div className="w-full max-w-2xl">
@@ -150,12 +156,52 @@ export function StepSelfHosting() {
               <Download className="mr-2 h-4 w-4" /> Download ci-cd.zip
             </a>
           </Button>
-          <p className="mt-2 text-sm text-muted-foreground">These workflows automate three things:</p>
-          <ul className="mt-1 list-inside list-disc space-y-1 text-sm text-muted-foreground">
-            <li>Business users can initiate a merge from main to production — Claude will create a PR and summarise changes</li>
-            <li>Claude reviews the PR against your guardrails</li>
-            <li>Claude approves the PR if everything looks good</li>
-          </ul>
+          <p className="mt-3 text-sm text-muted-foreground">This zip contains three GitHub Actions workflows:</p>
+
+          <div className="mt-3 space-y-3">
+            <div className="rounded-lg border border-border bg-card p-3">
+              <p className="text-sm font-medium text-foreground">
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">initiate-release.yml</code>
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Adds a manual "Run workflow" button in your{" "}
+                {actionsLink ? (
+                  <a href={actionsLink} target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1">
+                    Actions tab <ExternalLink className="h-3 w-3" />
+                  </a>
+                ) : (
+                  "Actions tab"
+                )}. When clicked, Claude creates a PR from <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">main</code> to <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">production</code> with a summary of all changes — so business users never have to touch Git.
+              </p>
+            </div>
+
+            <div className="rounded-lg border border-border bg-card p-3">
+              <p className="text-sm font-medium text-foreground">
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ci-guardrails.yml</code>
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Triggered on every PR. Claude reviews the changes against your <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">LOVABLE.md</code> guardrails and auto-approves if everything is compliant. Non-compliant changes are blocked.
+              </p>
+            </div>
+
+            <div className="rounded-lg border border-border bg-card p-3">
+              <p className="text-sm font-medium text-foreground">
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">deploy.yml</code>
+                {deployYmlLink && (
+                  <a href={deployYmlLink} target="_blank" rel="noopener noreferrer" className="ml-2 text-accent underline-offset-4 hover:underline inline-flex items-center gap-1 text-xs">
+                    view <ExternalLink className="h-3 w-3" />
+                  </a>
+                )}
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Builds the application and publishes it to your hosting provider (AWS in this example). You need to set two environment variables in the workflow file:
+              </p>
+              <ul className="mt-1 ml-4 list-inside list-disc space-y-1 text-xs text-muted-foreground">
+                <li><code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">S3_BUCKET_NAME</code> — your S3 bucket name</li>
+                <li><code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">CLOUDFRONT_DISTRIBUTION_ID</code> — your CloudFront distribution ID</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
         <div>
