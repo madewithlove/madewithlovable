@@ -21,14 +21,14 @@ export function StepCompletion() {
         <div className="mb-6 flex items-center gap-3">
           <PartyPopper className="h-10 w-10 text-accent" />
           <h2 className="text-2xl font-bold text-foreground">
-            congratulations, your lovable project is now de-risked!
+            Congratulations, your Lovable project is now de-risked!
           </h2>
         </div>
 
         <div className="mb-6 space-y-4">
           {completed.length > 0 && (
             <div>
-              <h3 className="mb-2 text-sm font-semibold text-foreground">completed steps</h3>
+              <h3 className="mb-2 text-sm font-semibold text-foreground">Completed steps</h3>
               <ul className="space-y-1">
                 {completed.map((s) => (
                   <li key={s.id} className="flex items-center gap-2 text-sm text-foreground">
@@ -41,7 +41,7 @@ export function StepCompletion() {
 
           {skipped.length > 0 && (
             <div>
-              <h3 className="mb-2 text-sm font-semibold text-foreground">skipped steps</h3>
+              <h3 className="mb-2 text-sm font-semibold text-foreground">Skipped steps</h3>
               <ul className="space-y-1">
                 {skipped.map((s) => (
                   <li key={s.id} className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -54,7 +54,7 @@ export function StepCompletion() {
         </div>
 
         <Button variant="outline" onClick={() => navigate("/")}>
-          start over
+          Start over
         </Button>
       </motion.div>
     </div>

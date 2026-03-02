@@ -7,57 +7,57 @@ export function StepSelfHosting() {
 
   return (
     <div className="w-full max-w-2xl">
-      <h2 className="mb-2 text-2xl font-bold text-foreground">production self-hosting</h2>
+      <h2 className="mb-2 text-2xl font-bold text-foreground">Production Self-Hosting</h2>
       <p className="mb-6 text-muted-foreground">
-        set up automated deployments with code review guardrails. this step is optional.
+        Set up automated deployments with code review guardrails. This step is optional.
       </p>
 
       <div className="mb-6 space-y-4">
         <div>
-          <h3 className="mb-2 text-sm font-semibold text-foreground">1. create a production branch</h3>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">1. Create a production branch</h3>
           <p className="text-sm text-muted-foreground">
-            in your github repository, create a new branch called <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">production</code>.
+            In your GitHub repository, create a new branch called <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">production</code>.
           </p>
         </div>
 
         <div>
-          <h3 className="mb-2 text-sm font-semibold text-foreground">2. download git workflows</h3>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">2. Download Git workflows</h3>
           <Button variant="outline" size="sm" disabled>
-            <Download className="mr-2 h-4 w-4" /> download workflows.zip (coming soon)
+            <Download className="mr-2 h-4 w-4" /> Download workflows.zip (coming soon)
           </Button>
-          <p className="mt-2 text-sm text-muted-foreground">these workflows automate three things:</p>
+          <p className="mt-2 text-sm text-muted-foreground">These workflows automate three things:</p>
           <ul className="mt-1 list-inside list-disc space-y-1 text-sm text-muted-foreground">
-            <li>business users can initiate a merge from main to production — claude will create a PR and summarise changes</li>
-            <li>claude reviews the PR against your guardrails</li>
-            <li>claude approves the PR if everything looks good</li>
+            <li>Business users can initiate a merge from main to production — Claude will create a PR and summarise changes</li>
+            <li>Claude reviews the PR against your guardrails</li>
+            <li>Claude approves the PR if everything looks good</li>
           </ul>
         </div>
 
         <div>
-          <h3 className="mb-2 text-sm font-semibold text-foreground">3. prerequisites</h3>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">3. Prerequisites</h3>
           <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
-            <li>install the claude github app on your repository</li>
-            <li>add <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ANTHROPIC_KEY</code> as a repository secret</li>
+            <li>Install the Claude GitHub app on your repository</li>
+            <li>Add <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ANTHROPIC_KEY</code> as a repository secret</li>
           </ul>
         </div>
 
         <div>
-          <h3 className="mb-2 text-sm font-semibold text-foreground">4. hosting with AWS S3 + CloudFront</h3>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">4. Hosting with AWS S3 + CloudFront</h3>
           <Button variant="outline" size="sm" disabled>
-            <Download className="mr-2 h-4 w-4" /> download terraform.zip (coming soon)
+            <Download className="mr-2 h-4 w-4" /> Download terraform.zip (coming soon)
           </Button>
           <p className="mt-2 text-xs text-muted-foreground">
-            alternatively, you can create the S3 bucket and CloudFront distribution manually.
+            Alternatively, you can create the S3 bucket and CloudFront distribution manually.
           </p>
         </div>
       </div>
 
       <div className="flex gap-3">
         <Button onClick={nextStep} className="bg-accent text-accent-foreground hover:bg-accent/90">
-          next <ArrowRight className="ml-2 h-4 w-4" />
+          Next <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
         <Button variant="ghost" onClick={() => skipStep(currentStep)} className="text-muted-foreground">
-          skip for now
+          Skip for now
         </Button>
       </div>
     </div>

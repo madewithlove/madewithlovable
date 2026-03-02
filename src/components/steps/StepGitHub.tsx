@@ -9,9 +9,9 @@ export function StepGitHub() {
 
   return (
     <div className="w-full max-w-2xl">
-      <h2 className="mb-2 text-2xl font-bold text-foreground">connect to github</h2>
+      <h2 className="mb-2 text-2xl font-bold text-foreground">Connect to GitHub</h2>
       <p className="mb-6 text-muted-foreground">
-        exporting your code to github is the first step to owning your codebase. this ensures you always have a copy of your code outside of lovable.
+        Exporting your code to GitHub is the first step to owning your codebase. This ensures you always have a copy of your code outside of Lovable.
       </p>
 
       <div className="mb-6 space-y-3">
@@ -21,7 +21,7 @@ export function StepGitHub() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
         >
-          open github settings for your project <ExternalLink className="h-4 w-4" />
+          Open GitHub settings for your project <ExternalLink className="h-4 w-4" />
         </a>
 
         <div>
@@ -31,13 +31,13 @@ export function StepGitHub() {
             rel="noopener noreferrer"
             className="text-sm text-accent underline-offset-4 hover:underline"
           >
-            read the lovable github docs →
+            Read the Lovable GitHub docs →
           </a>
         </div>
       </div>
 
       <Button onClick={nextStep} className="bg-accent text-accent-foreground hover:bg-accent/90">
-        next <ArrowRight className="ml-2 h-4 w-4" />
+        Next <ArrowRight className="ml-2 h-4 w-4" />
       </Button>
     </div>
   );

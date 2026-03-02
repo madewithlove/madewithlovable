@@ -21,11 +21,11 @@ interface WizardState {
 }
 
 const defaultSteps: StepInfo[] = [
-  { id: 1, label: "project url", status: "current", skippable: false },
-  { id: 2, label: "connect to github", status: "pending", skippable: false },
-  { id: 3, label: "guardrails", status: "pending", skippable: true },
-  { id: 4, label: "local setup", status: "pending", skippable: true },
-  { id: 5, label: "self-hosting", status: "pending", skippable: true },
+  { id: 1, label: "Project URL", status: "current", skippable: false },
+  { id: 2, label: "Connect to GitHub", status: "pending", skippable: false },
+  { id: 3, label: "Guardrails", status: "pending", skippable: true },
+  { id: 4, label: "Local Setup", status: "pending", skippable: true },
+  { id: 5, label: "Self-Hosting", status: "pending", skippable: true },
 ];
 
 const WizardContext = createContext<WizardState | undefined>(undefined);
@@ -61,7 +61,7 @@ export function WizardProvider({ children }: { children: ReactNode }) {
     if (next <= 5) {
       goToStep(next);
     } else {
-      setCurrentStep(6); // completion
+      setCurrentStep(6);
     }
   };
 
@@ -71,7 +71,7 @@ export function WizardProvider({ children }: { children: ReactNode }) {
     if (next <= 5) {
       goToStep(next);
     } else {
-      setCurrentStep(6); // completion
+      setCurrentStep(6);
     }
   };
 
