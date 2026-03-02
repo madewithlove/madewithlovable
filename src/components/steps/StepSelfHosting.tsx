@@ -14,6 +14,9 @@ export function StepSelfHosting() {
   const secretsLink = githubRepo
     ? `https://github.com/${githubRepo.org}/${githubRepo.repo}/settings/secrets/actions`
     : null;
+  const actionsSettingsLink = githubRepo
+    ? `https://github.com/organizations/${githubRepo.org}/settings/actions`
+    : null;
 
   return (
     <div className="w-full max-w-2xl">
@@ -94,6 +97,17 @@ export function StepSelfHosting() {
                 <li><code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">VITE_SUPABASE_URL</code></li>
                 <li><code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">VITE_SUPABASE_PUBLISHABLE_KEY</code></li>
               </ul>
+            </li>
+            <li>
+              Enable <strong>"Allow GitHub Actions to create and approve pull requests"</strong> in your{" "}
+              {actionsSettingsLink ? (
+                <a href={actionsSettingsLink} target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1">
+                  organisation Actions settings <ExternalLink className="h-3 w-3" />
+                </a>
+              ) : (
+                "organisation Actions settings"
+              )}{" "}
+              (found at the bottom of the page)
             </li>
           </ul>
 
