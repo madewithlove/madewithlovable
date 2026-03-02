@@ -1,11 +1,34 @@
 import { useWizard } from "@/contexts/WizardContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, GitBranch, Users, RotateCcw, FileText } from "lucide-react";
 
 export function StepGitHub() {
   const { projectUuid, nextStep } = useWizard();
   const settingsUrl = `https://lovable.dev/projects/${projectUuid}/settings?tab=github`;
   const docsUrl = "https://docs.lovable.dev/integrations/github";
+
+  const benefits = [
+    {
+      icon: GitBranch,
+      title: "Version control",
+      description: "Every change is tracked with full history. You always know what changed, when, and by whom.",
+    },
+    {
+      icon: Users,
+      title: "Bi-directional sync",
+      description: "Engineers can contribute directly via code while business users keep building in Lovable. Changes sync both ways automatically.",
+    },
+    {
+      icon: RotateCcw,
+      title: "Easy rollbacks",
+      description: "Something went wrong? Roll back to any previous version in seconds — no data loss, no guesswork.",
+    },
+    {
+      icon: FileText,
+      title: "Changelog & audit trail",
+      description: "A complete changelog of every update provides transparency and accountability across your team.",
+    },
+  ];
 
   return (
     <div className="w-full max-w-2xl">
@@ -13,6 +36,18 @@ export function StepGitHub() {
       <p className="mb-6 text-muted-foreground">
         Exporting your code to GitHub is the first step to owning your codebase. This ensures you always have a copy of your code outside of Lovable.
       </p>
+
+      <div className="mb-6 grid gap-3 sm:grid-cols-2">
+        {benefits.map((b) => (
+          <div key={b.title} className="rounded-lg border border-border bg-card p-4">
+            <div className="mb-2 flex items-center gap-2">
+              <b.icon className="h-4 w-4 text-accent" />
+              <h3 className="text-sm font-semibold text-foreground">{b.title}</h3>
+            </div>
+            <p className="text-xs text-muted-foreground">{b.description}</p>
+          </div>
+        ))}
+      </div>
 
       <div className="mb-6 space-y-3">
         <a
