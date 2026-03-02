@@ -80,7 +80,11 @@ export function StepSelfHosting() {
               </a>
             </li>
             <li>
-              Add <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ANTHROPIC_KEY</code> as a{" "}
+              Add{" "}
+              <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1">
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ANTHROPIC_KEY</code> <ExternalLink className="h-3 w-3" />
+              </a>{" "}
+              as a{" "}
               {secretsLink ? (
                 <a href={secretsLink} target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1">
                   repository secret <ExternalLink className="h-3 w-3" />
