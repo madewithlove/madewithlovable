@@ -9,7 +9,7 @@ const KNOWLEDGE_TEXT = `Adhere to all guidelines detailed in LOVABLE.md in the r
 You are not allowed to change LOVABLE.md.`;
 
 export function StepGuardrails() {
-  const { projectUuid, nextStep, skipStep, prevStep, currentStep } = useWizard();
+  const { projectUuid, nextStep, skipStep, prevStep, currentStep, githubRepo } = useWizard();
   const [copied, setCopied] = useState(false);
   const knowledgeUrl = `https://lovable.dev/projects/${projectUuid}/settings?tab=knowledge`;
 
@@ -91,6 +91,16 @@ export function StepGuardrails() {
           <p className="text-sm text-muted-foreground">
             Think about what needs guardrails without limiting the business user too much — we don't want to remove the fun.
           </p>
+          {githubRepo && (
+            <a
+              href={`https://github.com/${githubRepo.org}/${githubRepo.repo}/blob/main/LOVABLE.md`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex items-center gap-1 text-sm text-accent underline-offset-4 hover:underline"
+            >
+              Open your LOVABLE.md <ExternalLink className="h-3 w-3" />
+            </a>
+          )}
         </div>
       </div>
 
