@@ -1,6 +1,6 @@
 import { useWizard } from "@/contexts/WizardContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, Download } from "lucide-react";
+import { ArrowRight, ArrowLeft, Download, Globe, ShieldCheck, Workflow, Server } from "lucide-react";
 
 export function StepSelfHosting() {
   const { nextStep, skipStep, prevStep, currentStep } = useWizard();
@@ -9,8 +9,39 @@ export function StepSelfHosting() {
     <div className="w-full max-w-2xl">
       <h2 className="mb-2 text-2xl font-bold text-foreground">Production Self-Hosting</h2>
       <p className="mb-6 text-muted-foreground">
-        Set up automated deployments with code review guardrails. This step is optional.
+        Decouple your production environment from Lovable's hosting. Business users keep building in Lovable, but nothing reaches production without automated review — giving you full control over what goes live.
       </p>
+
+      <div className="mb-6 grid gap-3 sm:grid-cols-2">
+        <div className="rounded-lg border border-border bg-card p-4">
+          <div className="mb-2 flex items-center gap-2">
+            <Server className="h-4 w-4 text-accent" />
+            <h3 className="text-sm font-semibold text-foreground">Own your infrastructure</h3>
+          </div>
+          <p className="text-xs text-muted-foreground">Host on your own AWS account with S3 and CloudFront. No vendor lock-in, full control over uptime, scaling, and costs.</p>
+        </div>
+        <div className="rounded-lg border border-border bg-card p-4">
+          <div className="mb-2 flex items-center gap-2">
+            <Workflow className="h-4 w-4 text-accent" />
+            <h3 className="text-sm font-semibold text-foreground">Automated CI/CD pipeline</h3>
+          </div>
+          <p className="text-xs text-muted-foreground">GitHub Actions automatically handle the merge, review, and deployment process — no manual steps needed.</p>
+        </div>
+        <div className="rounded-lg border border-border bg-card p-4">
+          <div className="mb-2 flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-accent" />
+            <h3 className="text-sm font-semibold text-foreground">AI-powered code review</h3>
+          </div>
+          <p className="text-xs text-muted-foreground">Claude reviews every change against your guardrails before it can reach production. Non-compliant code is blocked automatically.</p>
+        </div>
+        <div className="rounded-lg border border-border bg-card p-4">
+          <div className="mb-2 flex items-center gap-2">
+            <Globe className="h-4 w-4 text-accent" />
+            <h3 className="text-sm font-semibold text-foreground">Business users stay empowered</h3>
+          </div>
+          <p className="text-xs text-muted-foreground">Non-technical team members can trigger deployments with a single click. The automation handles the safety checks.</p>
+        </div>
+      </div>
 
       <div className="mb-6 space-y-4">
         <div>
