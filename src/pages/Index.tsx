@@ -7,18 +7,18 @@ import logo from "@/assets/logo.png";
 const points = [
   {
     icon: Zap,
-    title: "lovable is great for agility",
-    description: "move fast, ship faster. lovable gets you to market at incredible speed.",
+    title: "Lovable is great for agility",
+    description: "Move fast, ship faster. Lovable gets you to market at incredible speed.",
   },
   {
     icon: Shield,
-    title: "but it has structural risks",
-    description: "production-grade stability, reliability, and infrastructure need careful handling.",
+    title: "But it has structural risks",
+    description: "Production-grade stability, reliability, and infrastructure need careful handling.",
   },
   {
     icon: Code,
-    title: "developers can't fully own the code",
-    description: "without guardrails, business users and developers work at cross purposes.",
+    title: "Developers can't fully own the code",
+    description: "Without guardrails, business users and developers work at cross purposes.",
   },
 ];
 
@@ -36,7 +36,7 @@ const Index = () => {
         >
           <img src={logo} alt="madewithlovable" className="mx-auto mb-6 w-full max-w-2xl" />
           <p className="mx-auto max-w-2xl text-lg text-accent-foreground/70">
-            set up a protected production environment and put guardrails on lovable so business users can keep building without risk.
+            Set up a protected production environment and put guardrails on Lovable so business users can keep building without risk.
           </p>
         </motion.div>
 
@@ -67,7 +67,7 @@ const Index = () => {
             onClick={() => navigate("/wizard")}
             className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg"
           >
-            de-risk your app now
+            De-risk your app now
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </motion.div>

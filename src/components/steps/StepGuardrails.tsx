@@ -20,23 +20,23 @@ export function StepGuardrails() {
 
   return (
     <div className="w-full max-w-2xl">
-      <h2 className="mb-2 text-2xl font-bold text-foreground">set up guardrails</h2>
+      <h2 className="mb-2 text-2xl font-bold text-foreground">Set Up Guardrails</h2>
       <p className="mb-6 text-muted-foreground">
-        add a LOVABLE.md file to your repository root to define rules that lovable must follow.
+        Add a LOVABLE.md file to your repository root to define rules that Lovable must follow.
       </p>
 
       <div className="mb-6 space-y-4">
         <div>
-          <h3 className="mb-2 text-sm font-semibold text-foreground">1. download LOVABLE.md</h3>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">1. Download LOVABLE.md</h3>
           <Button variant="outline" size="sm" disabled>
-            <Download className="mr-2 h-4 w-4" /> download LOVABLE.md (coming soon)
+            <Download className="mr-2 h-4 w-4" /> Download LOVABLE.md (coming soon)
           </Button>
         </div>
 
         <div>
-          <h3 className="mb-2 text-sm font-semibold text-foreground">2. add knowledge instructions</h3>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">2. Add knowledge instructions</h3>
           <p className="mb-2 text-sm text-muted-foreground">
-            open your project's knowledge settings and paste the following:
+            Open your project's knowledge settings and paste the following:
           </p>
           <a
             href={knowledgeUrl}
@@ -44,7 +44,7 @@ export function StepGuardrails() {
             rel="noopener noreferrer"
             className="mb-3 inline-flex items-center gap-2 text-sm text-accent underline-offset-4 hover:underline"
           >
-            open knowledge settings <ExternalLink className="h-3 w-3" />
+            Open knowledge settings <ExternalLink className="h-3 w-3" />
           </a>
           <div className="relative rounded-lg border border-border bg-muted p-4">
             <pre className="text-sm text-foreground whitespace-pre-wrap">{KNOWLEDGE_TEXT}</pre>
@@ -60,10 +60,10 @@ export function StepGuardrails() {
 
       <div className="flex gap-3">
         <Button onClick={nextStep} className="bg-accent text-accent-foreground hover:bg-accent/90">
-          next <ArrowRight className="ml-2 h-4 w-4" />
+          Next <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
         <Button variant="ghost" onClick={() => skipStep(currentStep)} className="text-muted-foreground">
-          skip for now
+          Skip for now
         </Button>
       </div>
     </div>

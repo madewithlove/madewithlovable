@@ -21,9 +21,9 @@ export function StepProjectUrl() {
 
   return (
     <div className="w-full max-w-2xl">
-      <h2 className="mb-2 text-2xl font-bold text-foreground">enter your lovable project url</h2>
+      <h2 className="mb-2 text-2xl font-bold text-foreground">Enter your Lovable project URL</h2>
       <p className="mb-6 text-muted-foreground">
-        paste your project url so we can configure everything for you.
+        Paste your project URL so we can configure everything for you.
       </p>
       <Input
         placeholder="https://lovable.dev/projects/your-project-id"
@@ -33,16 +33,16 @@ export function StepProjectUrl() {
       />
       {url && !isValid && (
         <p className="mb-4 text-sm text-destructive">
-          please enter a valid lovable project url (e.g. https://lovable.dev/projects/uuid)
+          Please enter a valid Lovable project URL (e.g. https://lovable.dev/projects/uuid)
         </p>
       )}
       {isValid && (
         <p className="mb-4 text-sm text-accent">
-          ✓ valid project detected
+          ✓ Valid project detected
         </p>
       )}
       <Button onClick={handleNext} disabled={!isValid} className="bg-accent text-accent-foreground hover:bg-accent/90">
-        next <ArrowRight className="ml-2 h-4 w-4" />
+        Next <ArrowRight className="ml-2 h-4 w-4" />
       </Button>
     </div>
   );
