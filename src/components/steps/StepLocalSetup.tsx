@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useWizard } from "@/contexts/WizardContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Copy, Check, Download, ExternalLink } from "lucide-react";
+import { ArrowRight, ArrowLeft, Copy, Check, Download, ExternalLink } from "lucide-react";
 
 export function StepLocalSetup() {
-  const { nextStep, skipStep, currentStep } = useWizard();
+  const { nextStep, skipStep, prevStep, currentStep } = useWizard();
   const [copied, setCopied] = useState(false);
   const cloneCmd = "git clone <your-github-repo-url>";
 
@@ -65,6 +65,9 @@ export function StepLocalSetup() {
       </div>
 
       <div className="flex gap-3">
+        <Button variant="outline" onClick={prevStep}>
+          <ArrowLeft className="mr-2 h-4 w-4" /> Back
+        </Button>
         <Button onClick={nextStep} className="bg-accent text-accent-foreground hover:bg-accent/90">
           Next <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
