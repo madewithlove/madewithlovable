@@ -1,6 +1,7 @@
 import { useWizard, StepStatus } from "@/contexts/WizardContext";
 import { Check, SkipForward } from "lucide-react";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.png";
 
 function StepIndicator({ status, number }: { status: StepStatus; number: number }) {
   if (status === "completed") {
@@ -36,6 +37,7 @@ export function WizardSidebar() {
 
   return (
     <aside className="w-64 shrink-0 bg-sidebar p-6 text-sidebar-foreground min-h-screen">
+      <img src={logo} alt="madewithlovable" className="mb-2 h-10" />
       <h2 className="mb-8 text-lg font-bold tracking-tight">madewithlovable</h2>
       <nav className="space-y-1">
         {steps.map((step) => (
