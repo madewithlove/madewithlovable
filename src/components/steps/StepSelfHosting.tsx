@@ -120,6 +120,11 @@ export function StepSelfHosting() {
             <p className="text-xs text-muted-foreground mt-3 mb-2"># Or via Docker (from Step 4)</p>
             <code className="block text-sm text-foreground">docker compose run --rm app sh -c "npm ci && npm run build"</code>
           </div>
+          <div className="mt-3 rounded-lg border border-border bg-accent/10 p-3">
+            <p className="text-xs text-muted-foreground">
+              <strong className="text-foreground">Note:</strong> Lovable sometimes doesn't update <code className="rounded bg-muted px-1 py-0.5 font-mono">package-lock.json</code> when <code className="rounded bg-muted px-1 py-0.5 font-mono">package.json</code> changes, causing <code className="rounded bg-muted px-1 py-0.5 font-mono">npm ci</code> to fail. If that happens, replace <code className="rounded bg-muted px-1 py-0.5 font-mono">npm ci</code> with <code className="rounded bg-muted px-1 py-0.5 font-mono">npm install</code>, then commit and push the updated lock file back to Git.
+            </p>
+          </div>
           <p className="mt-2 text-xs text-muted-foreground">
             Your site is now available through the public CloudFront URL.
           </p>
