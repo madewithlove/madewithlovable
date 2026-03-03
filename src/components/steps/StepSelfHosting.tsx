@@ -124,6 +124,39 @@ export function StepSelfHosting() {
             Your site is now available through the public CloudFront URL.
           </p>
         </div>
+
+        <div>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">5. Lovable Cloud (Supabase)</h3>
+          <p className="mb-2 text-sm text-muted-foreground">
+            This is only relevant if you use Lovable Cloud. By default, your self-hosted production frontend will hit the <strong>same</strong> Supabase backend and database as your test environment. For many projects, this is perfectly fine.
+          </p>
+          <p className="mb-2 text-sm text-muted-foreground">
+            If you need a dedicated production database, you'll need to set up a separate managed Supabase project and point your self-hosted app to it. Follow the{" "}
+            <a
+              href="https://docs.lovable.dev/tips-tricks/external-deployment-hosting#manual-migration-using-the-supabase-dashboard"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1"
+            >
+              manual migration guide <ExternalLink className="h-3 w-3" />
+            </a>{" "}
+            to set up a managed Supabase instance.
+          </p>
+          <div className="rounded-lg border border-border bg-accent/10 p-3">
+            <p className="text-xs text-muted-foreground">
+              <strong className="text-foreground">Note:</strong> The{" "}
+              <a
+                href="https://docs.lovable.dev/features/environments"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1"
+              >
+                Lovable Environments (beta) <ExternalLink className="h-3 w-3" />
+              </a>{" "}
+              feature only applies when using Lovable's published URL — it does not work for self-hosted deployments.
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="flex gap-3">
