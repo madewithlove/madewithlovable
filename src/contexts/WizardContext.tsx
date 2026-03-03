@@ -1,3 +1,4 @@
+/* WizardContext - updated */
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 export type StepStatus = "pending" | "current" | "completed" | "skipped";
