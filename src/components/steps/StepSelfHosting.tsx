@@ -104,6 +104,23 @@ export function StepSelfHosting() {
             </CollapsibleContent>
           </Collapsible>
         </div>
+
+        <div>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">4. Build and deploy</h3>
+          <p className="mb-2 text-sm text-muted-foreground">
+            Build the production bundle, then upload the contents of <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">dist/</code> to your S3 bucket.
+          </p>
+          <div className="rounded-lg border border-border bg-muted p-4 space-y-1">
+            <p className="text-xs text-muted-foreground mb-2"># If you have npm locally</p>
+            <code className="block text-sm text-foreground">npm ci</code>
+            <code className="block text-sm text-foreground">npm run build</code>
+            <p className="text-xs text-muted-foreground mt-3 mb-2"># Or via Docker (from Step 4)</p>
+            <code className="block text-sm text-foreground">docker compose run --rm app sh -c "npm ci && npm run build"</code>
+          </div>
+          <p className="mt-2 text-xs text-muted-foreground">
+            This creates the production build in <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">dist/</code>. Drop all the contents of that folder into your freshly created S3 bucket.
+          </p>
+        </div>
       </div>
 
       <div className="flex gap-3">
