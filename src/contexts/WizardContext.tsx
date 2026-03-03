@@ -31,6 +31,7 @@ const defaultSteps: StepInfo[] = [
   { id: 3, label: "Guardrails", status: "pending", skippable: true },
   { id: 4, label: "Local Setup", status: "pending", skippable: true },
   { id: 5, label: "Self-Hosting", status: "pending", skippable: true },
+  { id: 6, label: "CI/CD Pipeline", status: "pending", skippable: true },
 ];
 
 const WizardContext = createContext<WizardState | undefined>(undefined);
@@ -70,20 +71,20 @@ export function WizardProvider({ children }: { children: ReactNode }) {
   const skipStep = (step: number) => {
     updateStepStatus(step, "skipped");
     const next = step + 1;
-    if (next <= 5) {
+    if (next <= 6) {
       goToStep(next);
     } else {
-      setCurrentStep(6);
+      setCurrentStep(7);
     }
   };
 
   const nextStep = () => {
     completeStep(currentStep);
     const next = currentStep + 1;
-    if (next <= 5) {
+    if (next <= 6) {
       goToStep(next);
     } else {
-      setCurrentStep(6);
+      setCurrentStep(7);
     }
   };
 

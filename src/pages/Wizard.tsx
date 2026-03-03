@@ -5,6 +5,7 @@ import { StepGitHub } from "@/components/steps/StepGitHub";
 import { StepGuardrails } from "@/components/steps/StepGuardrails";
 import { StepLocalSetup } from "@/components/steps/StepLocalSetup";
 import { StepSelfHosting } from "@/components/steps/StepSelfHosting";
+import { StepCICD } from "@/components/steps/StepCICD";
 import { StepCompletion } from "@/components/steps/StepCompletion";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -18,7 +19,8 @@ function WizardContent() {
       case 3: return <StepGuardrails />;
       case 4: return <StepLocalSetup />;
       case 5: return <StepSelfHosting />;
-      case 6: return <StepCompletion />;
+      case 6: return <StepCICD />;
+      case 7: return <StepCompletion />;
       default: return <StepProjectUrl />;
     }
   };
