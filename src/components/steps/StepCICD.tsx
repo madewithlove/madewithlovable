@@ -1,6 +1,7 @@
 import { useWizard } from "@/contexts/WizardContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, Download, ShieldCheck, Workflow, ExternalLink } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ArrowRight, ArrowLeft, Download, ShieldCheck, Workflow, ExternalLink, ChevronDown } from "lucide-react";
 
 export function StepCICD() {
   const { nextStep, skipStep, prevStep, currentStep, githubRepo } = useWizard();
@@ -72,6 +73,52 @@ export function StepCICD() {
               )}
             </li>
             <li>
+              Add <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">AWS_ACCESS_KEY_ID</code> and <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">AWS_SECRET_ACCESS_KEY</code> as{" "}
+              {secretsLink ? (
+                <a href={secretsLink} target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1">
+                  repository secrets <ExternalLink className="h-3 w-3" />
+                </a>
+              ) : (
+                "repository secrets"
+              )}.{" "}
+              Create a CI/CD user in{" "}
+              <a href="https://console.aws.amazon.com/iam/" target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1">
+                AWS IAM <ExternalLink className="h-3 w-3" />
+              </a>{" "}
+              with an API key and the following permission policy:
+              <Collapsible>
+                <CollapsibleTrigger asChild>
+                  <button className="mt-1 rounded-md px-2 py-1 text-xs text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1 [&[data-state=open]>svg]:rotate-180">
+                    View IAM policy <ChevronDown className="h-3 w-3 transition-transform duration-200" />
+                  </button>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <pre className="mt-2 rounded-lg border border-border bg-muted p-3 text-xs text-foreground overflow-x-auto">{`{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:DeleteObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "<your_S3_bucket_ARN>",
+                "<your_S3_bucket_ARN>/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudfront:CreateInvalidation"
+            ],
+            "Resource": "*"
+        }
+    ]
+}`}</pre>
+                </CollapsibleContent>
+              </Collapsible>
               If using Lovable Cloud, also add your Supabase credentials as{" "}
               {secretsLink ? (
                 <a href={secretsLink} target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1">
