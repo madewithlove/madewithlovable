@@ -71,7 +71,10 @@ export function StepSelfHosting() {
         <div>
           <h3 className="mb-2 text-sm font-semibold text-foreground">3. Set up AWS S3 + CloudFront</h3>
           <p className="mb-2 text-sm text-muted-foreground">
-            You need an S3 bucket and a CloudFront distribution. You can either create them manually in the AWS Console or use the Terraform config below.
+            You need an S3 bucket (can be private) and a CloudFront distribution. CloudFront's Free or Pay-as-you-go tier will suffice — it uses S3 as the origin and automatically creates the necessary access permissions.
+          </p>
+          <p className="mb-2 text-sm text-muted-foreground">
+            You can either create them manually in the AWS Console or use the Terraform config below.
           </p>
           <p className="mb-3 text-xs text-muted-foreground">
             If you don't have Terraform installed, manually creating the two resources in the AWS Console will likely be faster.
