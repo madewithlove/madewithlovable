@@ -1,0 +1,46 @@
+name: Move main to production
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+  issues: write
+
+jobs:
+  create-release-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for changes
+        run: |
+          DIFF=$(git diff origin/production..origin/main -- . ':!package-lock.json' || true)
+          if [ -z "$DIFF" ]; then
+            echo "Nothing new to deploy — main and production are identical."
+            exit 1
+          fi
+
+      - name: Claude creates release PR
+        uses: anthropics/claude-code-action@v1
+        with:
+          prompt: |
+            Create a release PR from main to production.
+
+            1. Run: gh pr list --base production --head main --json number --jq '.[0].number'
+            2. If a PR already exists, do nothing — just say the PR already exists.
+            3. If no PR exists:
+               - Run: git log origin/production..origin/main --oneline
+               - Write a clear PR description summarizing the changes. Group related changes together. Use markdown with a short summary at the top and a bullet list of changes.
+               - Run: gh pr create --base production --head main --title "Release: main to production" --body "<your description>"
+          allowed_bots: 'github-actions'
+          claude_args: '--allowedTools Bash'
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+        env:
+          ANTHROPIC_MODEL: claude-haiku-4-5-20251001
