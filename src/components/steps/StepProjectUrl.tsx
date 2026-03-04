@@ -41,9 +41,22 @@ export function StepProjectUrl() {
           ✓ Valid project detected
         </p>
       )}
-      <Button onClick={handleNext} disabled={!isValid} className="bg-accent text-accent-foreground hover:bg-accent/90">
-        Next <ArrowRight className="ml-2 h-4 w-4" />
-      </Button>
+      <div className="flex gap-3">
+        <Button onClick={handleNext} disabled={!isValid} className="bg-accent text-accent-foreground hover:bg-accent/90">
+          Next <ArrowRight className="ml-2 h-4 w-4" />
+        </Button>
+        <Button
+          variant="outline"
+          onClick={() => {
+            const dummyUrl = "https://lovable.dev/projects/00000000-0000-0000-0000-000000000000";
+            setUrl(dummyUrl);
+            setProjectUuid("00000000-0000-0000-0000-000000000000");
+            nextStep();
+          }}
+        >
+          Continue with demo project
+        </Button>
+      </div>
     </div>
   );
 }
