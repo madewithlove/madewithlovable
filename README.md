@@ -4,7 +4,8 @@ A step-by-step guide to de-risking your [Lovable](https://lovable.dev) project f
 
 Lovable is excellent for agility and speed-to-market, but shipping AI-generated code to production without guardrails introduces structural risks — from unreviewed changes breaking infrastructure to vendor lock-in on hosting. This project provides a repeatable playbook to mitigate those risks while keeping the benefits of rapid AI-assisted development.
 
-**Live app:** [made-with.lovable.app](https://made-with.lovable.app)
+- **Lovable-hosted:** [made-with.lovable.app](https://made-with.lovable.app)
+- **Self-hosted (AWS):** [d12vini1os6dc2.cloudfront.net](https://d12vini1os6dc2.cloudfront.net)
 
 ---
 
