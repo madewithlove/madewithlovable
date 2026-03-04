@@ -1,0 +1,61 @@
+name: Claude Guardrails Review
+
+on:
+  pull_request:
+    branches: [production]
+    types: [opened, synchronize]
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+  issues: write
+
+jobs:
+  claude-review:
+    if: github.event.pull_request.user.login == 'claude[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Claude Code Review
+        uses: anthropics/claude-code-action@v1
+        with:
+          prompt: |
+            Do NOT explore or read the full repository. Only review the PR diff.
+
+            1. Read LOVABLE.md to understand the guardrails.
+            2. Run: gh pr diff ${{ github.event.pull_request.number }}
+            3. Check if any changed files violate the guardrails.
+            4. Run: gh pr view ${{ github.event.pull_request.number }} --json headRefOid --jq .headRefOid
+               Save this SHA as COMMIT_SHA.
+
+            If violations are found, submit a REQUEST_CHANGES review with inline comments.
+            Write a JSON file /tmp/review.json like this example:
+            {
+              "commit_id": "<COMMIT_SHA>",
+              "event": "REQUEST_CHANGES",
+              "body": "Guardrails review failed. See inline comments for details.",
+              "comments": [
+                {
+                  "path": "terraform/main.tf",
+                  "line": 1,
+                  "body": "This file is protected by LOVABLE.md guardrails and should not be modified."
+                }
+              ]
+            }
+            Each violation MUST have its own entry in the comments array with the correct file path and line number 1.
+            Then run: gh api repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews --method POST --input /tmp/review.json
+            Also run: gh pr comment ${{ github.event.pull_request.number }} --body "<a summary of all violations found>"
+            Do NOT merge the PR.
+
+            If all changes are within the allowed scope, approve and merge:
+            - Run: gh pr review ${{ github.event.pull_request.number }} --approve --body "Review passed. All changes are within the allowed scope."
+            - Run: gh pr merge ${{ github.event.pull_request.number }} --merge
+          allowed_bots: 'claude'
+          claude_args: '--allowedTools Bash,Read'
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+        env:
+          ANTHROPIC_MODEL: claude-haiku-4-5-20251001

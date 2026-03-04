@@ -9,6 +9,9 @@ export function StepCICD() {
   const secretsLink = githubRepo
     ? `https://github.com/${githubRepo.org}/${githubRepo.repo}/settings/secrets/actions`
     : null;
+  const variablesLink = githubRepo
+    ? `https://github.com/${githubRepo.org}/${githubRepo.repo}/settings/variables/actions`
+    : null;
   const actionsSettingsLink = githubRepo
     ? `https://github.com/organizations/${githubRepo.org}/settings/actions`
     : null;
@@ -61,7 +64,7 @@ export function StepCICD() {
             <li>
               Add{" "}
               <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1">
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ANTHROPIC_KEY</code> <ExternalLink className="h-3 w-3" />
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ANTHROPIC_API_KEY</code> <ExternalLink className="h-3 w-3" />
               </a>{" "}
               as a{" "}
               {secretsLink ? (
@@ -191,10 +194,17 @@ export function StepCICD() {
                 )}
               </p>
               <p className="mt-1 text-xs text-muted-foreground">
-                Builds the application and publishes it to your hosting provider. You need to set two environment variables in the workflow file:
+                Builds the application and publishes it to your hosting provider. You need to add two{" "}
+                {variablesLink ? (
+                  <a href={variablesLink} target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-4 hover:underline inline-flex items-center gap-1">
+                    GitHub Actions variables <ExternalLink className="h-3 w-3" />
+                  </a>
+                ) : (
+                  "GitHub Actions variables"
+                )}:
               </p>
               <ul className="mt-1 ml-4 list-inside list-disc space-y-1 text-xs text-muted-foreground">
-                <li><code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">S3_BUCKET_NAME</code> — your S3 bucket name</li>
+                <li><code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">S3_BUCKET</code> — your S3 bucket name</li>
                 <li><code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">CLOUDFRONT_DISTRIBUTION_ID</code> — your CloudFront distribution ID</li>
               </ul>
             </div>
