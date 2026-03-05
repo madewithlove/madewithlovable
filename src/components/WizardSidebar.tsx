@@ -2,6 +2,7 @@ import { useWizard, StepStatus } from "@/contexts/WizardContext";
 import { Check, SkipForward, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
+import { Link } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -76,18 +77,18 @@ export function WizardSidebar() {
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="w-64 bg-sidebar p-6 text-sidebar-foreground">
-            <img src={logo} alt="madewithlovable" className="mb-8 w-full" />
+            <Link to="/"><img src={logo} alt="madewithlovable" className="mb-8 w-full" /></Link>
             <SidebarNav />
           </SheetContent>
         </Sheet>
-        <img src={logo} alt="madewithlovable" className="h-6" />
+        <Link to="/"><img src={logo} alt="madewithlovable" className="h-6" /></Link>
       </div>
     );
   }
 
   return (
     <aside className="w-64 shrink-0 bg-sidebar p-6 text-sidebar-foreground min-h-screen">
-      <img src={logo} alt="madewithlovable" className="mb-8 w-full" />
+      <Link to="/"><img src={logo} alt="madewithlovable" className="mb-8 w-full" /></Link>
       <SidebarNav />
     </aside>
   );
