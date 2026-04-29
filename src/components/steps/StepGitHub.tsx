@@ -9,7 +9,7 @@ const GITHUB_URL_REGEX = /^https?:\/\/github\.com\/[^/]+\/[^/]+\/?$/;
 export function StepGitHub() {
   const { projectUuid, githubUrl, setGithubUrl, nextStep, prevStep } = useWizard();
   const [urlError, setUrlError] = useState("");
-  const settingsUrl = `https://lovable.dev/projects/${projectUuid}/settings?tab=github`;
+  const settingsUrl = `https://lovable.dev/projects/${projectUuid}/settings/git`;
   const docsUrl = "https://docs.lovable.dev/integrations/github";
 
   const handleUrlChange = (value: string) => {
